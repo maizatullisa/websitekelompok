@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mengatur viewport agar responsif terhadap lebar layar perangkat -->
+    <title>Ticket Booking</title> <!-- judul halaman yang akan ditampilkan di tab browser -->
+    <link href="assets/css/styles.css" rel="stylesheet"> <!-- Menautkan file CSS eksternal untuk styling halaman -->
+    <script src="https://cdn.tailwindcss.com"></script> <!--  library TailwindCSS untuk styling -->
+</head>
+<body class="bg-gray-100"> <!-- Membuka tag body dan memberikan kelas Tailwind untuk warna latar belakang abu-abu terang -->
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-md p-4"> <!-- header dengan latar belakang putih, bayangan sedang, dan padding 4 -->
+        <div class="container mx-auto flex justify-between items-center"> <!-- kontainer dengan margin otomatis di kedua sisi   -->
+            <h1 class="text-xl font-bold">Fly Anywhere</h1> <!-- Menampilkan judul "Fly Anywhere" dengan ukuran teks besar dan tebal -->
+
+            <nav> <!-- Mulai tag navigasi untuk menu -->
+                <ul class="flex space-x-4"> <!-- Membuat daftar horizontal dengan spasi 4 antara item -->
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Plane Tickets</a></li> <!-- Link untuk Tiket Pesawat dengan warna teks abu-abu dan perubahan warna menjadi biru saat hover -->
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Train Tickets</a></li> <!-- Link untuk Tiket Kereta dengan pengaturan warna yang sama -->
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Hotels</a></li> <!-- Link untuk Hotel dengan pengaturan warna yang sama -->
+                    <li><a href="#" class="text-gray-700 hover:text-blue-500">Help</a></li> <!-- Link untuk Bantuan dengan pengaturan warna yang sama -->
+                    <li><a href="signin.html" class="text-blue-500 font-bold">Login</a></li> <!-- Link Login dengan warna biru dan teks tebal -->
+                </ul>
+            </nav> 
+        </div> 
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative"> <!-- Mulai bagian hero dengan posisi relatif -->
+        <img src="assets/img/pesawat.jpg" alt="Pesawat" class="w-full h-96 object-cover"> 
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"> <!-- Menempatkan teks di tengah gambar dengan posisi absolute -->
+            <h2 class="text-4xl font-bold text-white">Fly Budget And Comfortably</h2> <!-- Judul besar dengan font tebal dan warna teks putih -->
+            <button class="mt-4 px-6 py-2 bg-blue-500 text-white font-bold rounded">Explore</button> 
+    </section> 
+
+    <!-- Booking Section -->
+    <section class="container mx-auto my-10 bg-white p-8 rounded shadow"> <!-- Membuat bagian form pemesanan dengan latar belakang putih, padding 8, sudut rounded, dan bayangan -->
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-4"> <!-- Membuat form dengan grid satu kolom di layar kecil dan dua kolom di layar lebih besar -->
+
+            <div> <!-- Div untuk input "From" -->
+                <label for="from" class="block text-gray-700">From</label> <!-- Label untuk input "From" dengan teks abu-abu -->
+                <input type="text" id="from" name="from" class="w-full p-2 border rounded" placeholder="City or Airport"> <!-- Input teks untuk kota atau bandara asal, dengan lebar penuh, padding 2, border, dan sudut rounded -->
+            </div> 
+
+            <div> <!-- Div untuk input "To" -->
+                <label for="to" class="block text-gray-700">To</label> <!-- Label untuk input "To" dengan teks abu-abu -->
+                <input type="text" id="to" name="to" class="w-full p-2 border rounded" placeholder="City or Airport"> <!-- Input teks untuk kota atau bandara tujuan, dengan pengaturan yang sama seperti "From" -->
+            </div> 
+            <div> <!-- Div untuk input "Departure" -->
+                <label for="departure" class="block text-gray-700">Departure</label> <!-- Label untuk input tanggal keberangkatan -->
+                <input type="date" id="departure" name="departure" class="w-full p-2 border rounded"> <!-- Input untuk memilih tanggal keberangkatan -->
+            </div> 
+
+            <div> <!-- Div untuk input "Return" -->
+                <label for="return" class="block text-gray-700">Return</label> <!-- Label untuk input tanggal kembali -->
+                <input type="date" id="return" name="return" class="w-full p-2 border rounded"> <!-- Input untuk memilih tanggal kembali -->
+            </div> 
+
+            <div> <!-- Div untuk input "Seats" -->
+                <label for="seats" class="block text-gray-700">Seats</label> <!-- Label untuk input jumlah kursi -->
+                <input type="number" id="seats" name="seats" class="w-full p-2 border rounded" placeholder="1"> <!-- Input untuk memilih jumlah kursi, hanya menerima angka -->
+            </div>
+            
+            <div class="md:col-span-2 text-right"> <!-- Membuat tombol submit yang melintasi dua kolom pada layar menengah ke atas dan memposisikannya ke kanan -->
+                <button type="submit" class="px-6 py-2 bg-blue-500 text-white font-bold rounded">Search</button> 
+        </form> 
+    </section> 
+</body> 
+</html> 

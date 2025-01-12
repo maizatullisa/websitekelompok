@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin</title>
+    <!-- Mengimpor stylesheet Tailwind CSS untuk styling halaman -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <!-- Container untuk form login dengan latar belakang putih, padding, dan bayangan -->
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <!-- Judul form login -->
+        <h1 class="text-2xl font-semibold text-center mb-6">Admin Login</h1>
+        <!-- Form untuk login dengan dua input dan tombol submit -->
+        <form id="login-form">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700">Username</label>
+                <input type="text" id="username" name="username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700">Password</label>
+                <input type="password" id="password" name="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <!-- Tombol submit untuk mengirim data login -->
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-300">Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Menambahkan event listener untuk menangani submit form secara asinkron
+        document.getElementById("login-form").addEventListener("submit", async function (e) {
+            e.preventDefault(); // Mencegah form untuk melakukan submit default yang menyebabkan reload halaman
+
+            // Mengambil nilai dari input form username dan password
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                // Mengirim data login ke server menggunakan metode POST dengan fetch
+                const response = await fetch("http://localhost:5000/api/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                const data = await response.json(); // Mengambil data JSON dari response server
+
+                // Mengecek apakah login berhasil berdasarkan status HTTP
+                if (response.status === 200) {
+                    alert("Login berhasil! Mengarahkan ke dashboard...");
+                    window.location.href = "dashboard.html"; // Mengarahkan ke halaman dashboard
+                } else {
+                    alert(`Login gagal: ${data.message}`); // Menampilkan pesan kesalahan jika login gagal
+                }
+            } catch (error) {
+                // Menangani kesalahan jika request gagal (misalnya jaringan atau server tidak dapat dijangkau)
+                console.error("Error:", error);
+                alert("Terjadi kesalahan saat menghubungi server.");
+            }
+        });
+    </script>
+</body>
+</html>
